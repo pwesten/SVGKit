@@ -159,6 +159,7 @@
 																		 withPrevCurve:lastCurve];
                         lastCoordinate = lastCurve.p;
                     } else if ([@"a" isEqualToString:command]) {
+                        // An elliptical-arc does not continue into a smooth-curve, so this only produces an end coordinate, not an SVGCurve.
                         lastCoordinate = [SVGKPointsAndPathsParser readEllipticalArcCommand:commandScanner
                                                                                        path:path
                                                                                  relativeTo:lastCoordinate
@@ -166,6 +167,7 @@
                         lastCurve = SVGCurveZero;
                         
                     }  else if ([@"A" isEqualToString:command]) {
+                        // An elliptical-arc does not continue into a smooth-curve, so this only produces an end coordinate, not an SVGCurve.
                         lastCoordinate = [SVGKPointsAndPathsParser readEllipticalArcCommand:commandScanner
                                                                                        path:path
                                                                                  relativeTo:CGPointZero
